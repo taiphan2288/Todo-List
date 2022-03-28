@@ -87,3 +87,20 @@ function deleteTask(index) {
     showList();
   }
 }
+
+// Edit task
+function editTask(index) {
+  const checkElement = document.querySelector(".item-edit");
+  const itemContent = document.querySelector(".menu-item .item-content");
+  listArray.forEach((item, index) => {
+    childTask = `
+    <span onclick="checkDone(${index})" class="item-done-task text-gradient"> done </span>
+    <span onclick="deleteTask(${index})" class="item-delete-task"> delete </span>`;
+  });
+  checkElement.innerHTML = childTask;
+  itemContent.removeAttribute("disabled");
+  itemContent.style.color = "#ec4899";
+}
+
+// Done task
+function doneTask() {}

@@ -123,6 +123,14 @@ body {
       cursor: pointer;
     }
   }
+  &-done-task {
+    font-size: 24px;
+    text-transform: uppercase;
+    &:hover {
+      opacity: 0.8;
+      cursor: pointer;
+    }
+  }
 }
 
 .footer {
