@@ -61,29 +61,26 @@ function deleteAll() {
 }
 
 // Check task
-function checkTask(index) {
+function checkTask(index1) {
   const checkElement = document.querySelector(".item-edit");
   const itemContent = document.querySelector(".menu-item .item-content");
-
+  const id = index1;
   while (checkElement.firstChild) {
     checkElement.removeChild(checkElement.firstChild);
   }
-
+  childTask = "";
   listArray.forEach((item, index) => {
+    index = id;
     childTask = `<span onclick="deleteTask(${index})" class="item-delete-task"> delete </span>`;
   });
-
   checkElement.innerHTML = childTask;
-  itemContent.style.color = "#43a917";
 }
 
 // Delete task
 function deleteTask(index) {
   if (confirm("Are you sure, you want to delete this task?")) {
     listArray.splice(index, 1);
-
     localStorage.setItem("Newtodo", JSON.stringify(listArray));
-
     showList();
   }
 }
@@ -92,14 +89,15 @@ function deleteTask(index) {
 function editTask(index) {
   const checkElement = document.querySelector(".item-edit");
   const itemContent = document.querySelector(".menu-item .item-content");
+  const id2 = index;
   listArray.forEach((item, index) => {
+    index = id2;
     childTask = `
     <span onclick="checkDone(${index})" class="item-done-task text-gradient"> done </span>
     <span onclick="deleteTask(${index})" class="item-delete-task"> delete </span>`;
   });
   checkElement.innerHTML = childTask;
   itemContent.removeAttribute("disabled");
-  itemContent.style.color = "#ec4899";
 }
 
 // Done task
