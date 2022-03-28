@@ -88,21 +88,32 @@ function deleteTask(index) {
   }
 }
 
-// Edit task
 function editTask(index) {
-  const checkElement = document.querySelector(".item-edit");
+  var task_edit_el = document.getElementById(index);
   const itemContent = document.querySelector(".menu-item .item-content");
-  const id2 = index;
-  listArray.forEach((item, index) => {
-    index = id2;
-    childTask = `
-    <span onclick="checkDone(${index})" class="item-done-task text-gradient"> done </span>
-    <span onclick="deleteTask(${index})" class="item-delete-task"> delete </span>`;
-  });
-  checkElement.innerHTML = childTask;
-  itemContent.removeAttribute("disabled");
-  itemContent.style.color = "#ec4899";
-}
 
-// Done task
-function doneTask() {}
+  let getLocalStorage = localStorage.getItem("Newtodo");
+  console.log({ getLocalStorage });
+  if (!getLocalStorage) {
+    listArray = [];
+  } else {
+    listArray = JSON.parse(getLocalStorage);
+  }
+
+  if (task_edit_el.innerText.toLowerCase() == "edit") {
+    task_edit_el.innerText = "done";
+    itemContent.style.color = "#ec4899";
+    itemContent.removeAttribute("disabled");
+    itemContent.focus();
+    console.log(index);
+  } else {
+    task_edit_el.innerText = "edit";
+    itemContent.style.color = "#ffffff";
+    itemContent.setAttribute("disabled", "disabled");
+    listArray.splice(index, 1, itemContent.value);
+    console.log(index);
+    localStorage.setItem("Newtodo", JSON.stringify(listArray));
+
+    showList();
+  }
+}
