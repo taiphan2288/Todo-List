@@ -42,8 +42,8 @@ function showList() {
                       index + 1
                     }. ${item}" disabled></input>
                     <div class="item-edit">
-                        <span onclick="editTask(${index})" class="item-edit-task text-gradient">edit</span>
-                        <span onclick="checkTask(${index})" class="item-check-task "> check </span>
+                        <span onclick="editTask(${index})" id="edit-task" class="item-edit-task text-gradient">edit</span>
+                        <span onclick="checkTask(${index})" class="item-check-task"> check </span>
                     </div>
                 </li>`;
   });
@@ -52,9 +52,38 @@ function showList() {
   penddingTask.innerHTML = listArray.length;
 }
 
+// Delete all task
 clearAllBtn.onclick = deleteAll;
 function deleteAll() {
   listArray = [];
   localStorage.setItem("Newtodo", JSON.stringify(listArray));
   showList();
+}
+
+// Check task
+function checkTask(index) {
+  const checkElement = document.querySelector(".item-edit");
+  const itemContent = document.querySelector(".menu-item .item-content");
+
+  while (checkElement.firstChild) {
+    checkElement.removeChild(checkElement.firstChild);
+  }
+
+  listArray.forEach((item, index) => {
+    childTask = `<span onclick="deleteTask(${index})" class="item-delete-task"> delete </span>`;
+  });
+
+  checkElement.innerHTML = childTask;
+  itemContent.style.color = "#43a917";
+}
+
+// Delete task
+function deleteTask(index) {
+  if (confirm("Are you sure, you want to delete this task?")) {
+    listArray.splice(index, 1);
+
+    localStorage.setItem("Newtodo", JSON.stringify(listArray));
+
+    showList();
+  }
 }

@@ -112,6 +112,15 @@ body {
       cursor: pointer;
     }
   }
+  &-delete-task {
+    font-size: 24px;
+    color: $delete-color;
+    text-transform: uppercase;
+    &:hover {
+      opacity: 0.8;
+      cursor: pointer;
+    }
+  }
 }
 
 .footer {
