@@ -50,6 +50,7 @@ body {
 
 .menu {
   margin-top: 20px;
+
   &-heading {
     color: #ffffff;
     font-size: 24px;
@@ -57,7 +58,7 @@ body {
   }
   &-list {
     margin-top: 16px;
-    max-height: 700px;
+    max-height: 400px;
     overflow-y: auto;
   }
   &-item {
@@ -92,8 +93,9 @@ body {
   &-edit {
     width: 15%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 0 20px;
   }
   &-edit-task {
     font-size: 24px;
