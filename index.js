@@ -38,7 +38,9 @@ function showList() {
   newTask = "";
   listArray.forEach((item, index) => {
     newTask += `<li class="menu-item">
-                    <div class="item-content"> ${index + 1}. ${item}</div>
+                    <input type="text" class="item-content" value="${
+                      index + 1
+                    }. ${item}" disabled></input>
                     <div class="item-edit">
                         <span onclick="editTask(${index})" class="item-edit-task text-gradient">edit</span>
                         <span onclick="checkTask(${index})" class="item-check-task "> check </span>
