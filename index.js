@@ -38,11 +38,9 @@ function showList() {
   newTask = "";
   listArray.forEach((item, index) => {
     newTask += `<li class="menu-item">
-                    <input type="text" class="item-content" value="${
-                      index + 1
-                    }. ${item}" disabled></input>
+                    <input type="text" class="item-content" value="${item}" disabled></input>
                     <div class="item-edit">
-                        <span onclick="editTask(${index})" id="edit-task" class="item-edit-task text-gradient">edit</span>
+                        <span onclick="editTask(${index})" id="${index}" class="item-edit-task text-gradient">edit</span>
                         <span onclick="checkTask(${index})" class="item-check-task"> check </span>
                     </div>
                 </li>`;
@@ -63,19 +61,20 @@ function deleteAll() {
 }
 
 // Check task
-function checkTask(index1) {
+function checkTask(indexCheck) {
   const checkElement = document.querySelector(".menu-item .item-edit");
   const itemContent = document.querySelector(".menu-item .item-content");
-  const id = index1;
+  const idCheck = indexCheck;
   while (checkElement.firstChild) {
     checkElement.removeChild(checkElement.firstChild);
   }
   childTask = " ";
   listArray.forEach((item, index) => {
-    index = id;
+    index = idCheck;
     childTask = `<span onclick="deleteTask(${index})" class="item-delete-task"> delete </span>`;
   });
   checkElement.innerHTML = childTask;
+  itemContent.style.color = "#43a917";
 }
 
 // Delete task
@@ -88,6 +87,7 @@ function deleteTask(index) {
   }
 }
 
+// Edit task
 function editTask(index) {
   var task_edit_el = document.getElementById(index);
   const itemContent = document.querySelector(".menu-item .item-content");
