@@ -49,6 +49,7 @@ function showList() {
   });
   todoList.innerHTML = newTask;
   inputBox.value = "";
+  console.log(listArray);
   penddingTask.innerHTML = listArray.length;
 }
 
@@ -57,18 +58,19 @@ clearAllBtn.onclick = deleteAll;
 function deleteAll() {
   listArray = [];
   localStorage.setItem("Newtodo", JSON.stringify(listArray));
+
   showList();
 }
 
 // Check task
 function checkTask(index1) {
-  const checkElement = document.querySelector(".item-edit");
+  const checkElement = document.querySelector(".menu-item .item-edit");
   const itemContent = document.querySelector(".menu-item .item-content");
   const id = index1;
   while (checkElement.firstChild) {
     checkElement.removeChild(checkElement.firstChild);
   }
-  childTask = "";
+  childTask = " ";
   listArray.forEach((item, index) => {
     index = id;
     childTask = `<span onclick="deleteTask(${index})" class="item-delete-task"> delete </span>`;
@@ -81,6 +83,7 @@ function deleteTask(index) {
   if (confirm("Are you sure, you want to delete this task?")) {
     listArray.splice(index, 1);
     localStorage.setItem("Newtodo", JSON.stringify(listArray));
+
     showList();
   }
 }
@@ -98,6 +101,7 @@ function editTask(index) {
   });
   checkElement.innerHTML = childTask;
   itemContent.removeAttribute("disabled");
+  itemContent.style.color = "#ec4899";
 }
 
 // Done task
