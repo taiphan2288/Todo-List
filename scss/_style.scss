@@ -1,0 +1,117 @@
+@import "variable";
+
+body {
+  line-height: 1;
+  font-family: $font;
+  color: $text-color;
+  font-weight: 400;
+  background-color: white;
+}
+
+.wrapper {
+  background-color: #374151;
+  height: 100vh;
+  width: 100vw;
+}
+.container {
+  max-width: 1170px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+.app {
+  &-heading {
+    color: $headings-color;
+    font-size: 40px;
+    font-weight: 400;
+  }
+  &-inputField {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    input {
+      background-color: #1f2937;
+      border-radius: 16px;
+      color: #eeeeee;
+      font-size: 20px;
+      margin: 0px 16px 0px 0px;
+      padding: 16px;
+      width: 90%;
+    }
+    button {
+      flex-shrink: 0;
+    }
+  }
+}
+
+.menu {
+  margin-top: 20px;
+  &-heading {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  &-list {
+    margin-top: 16px;
+    max-height: 700px;
+    overflow-y: auto;
+  }
+  &-item {
+    list-style: none;
+    margin-bottom: 10px;
+    background-color: #111827;
+    border-radius: 16px;
+    padding: 22px 15px;
+    cursor: default;
+    right: 0;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.item {
+  &-content {
+    line-height: 24px;
+    width: 70%;
+    margin-right: 14px;
+    font-size: 24px;
+  }
+  &-edit {
+    width: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &-edit-task {
+    font-size: 24px;
+    text-transform: uppercase;
+    &:hover {
+      opacity: 0.8;
+      cursor: pointer;
+    }
+  }
+  &-check-task {
+    font-size: 24px;
+    color: $text-check;
+    text-transform: uppercase;
+    &:hover {
+      opacity: 0.8;
+      cursor: pointer;
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  button {
+    color: $delete-color;
+  }
+}

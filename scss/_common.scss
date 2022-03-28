@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
+@import "variable";
+
+@mixin color-gradient($val1, $val2) {
+  background: linear-gradient(to right, $val1, $val2);
+}
+
+.button {
+  display: inline-block;
+  padding: 20px 6px;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  background-color: #374151;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  font-family: $font;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.text-gradient {
+  @include color-gradient($pink-color, $purple-color);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: $pink-color;
+}
