@@ -5,6 +5,7 @@ const penddingTask = document.querySelector(".footer .footer-pendingTask");
 const clearAllBtn = document.querySelector(".footer .deleteBtn");
 
 showList();
+
 addBtn.addEventListener("click", () => {
   let userEnterValue = inputBox.value;
   let getLocalStorage = localStorage.getItem("Newtodo");
@@ -79,6 +80,8 @@ function checkTask(indexCheck) {
 
 // Delete task
 function deleteTask(index) {
+  let getLocalStorageData = localStorage.getItem("Newtodo");
+  listArray = JSON.parse(getLocalStorageData);
   if (confirm("Are you sure, you want to delete this task?")) {
     listArray.splice(index, 1);
     localStorage.setItem("Newtodo", JSON.stringify(listArray));
@@ -105,7 +108,7 @@ function editTask(index) {
     itemContent.style.color = "#ec4899";
     itemContent.removeAttribute("disabled");
     itemContent.focus();
-    console.log(index);
+    // console.log(index);
   } else {
     task_edit_el.innerText = "edit";
     itemContent.style.color = "#ffffff";
