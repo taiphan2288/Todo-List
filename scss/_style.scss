@@ -33,7 +33,6 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-top: 15px;
-
     button {
       flex-shrink: 0;
     }
@@ -101,8 +100,8 @@ body {
   &-edit-task {
     font-size: 24px;
     text-transform: uppercase;
-    background-color: #111827;
     border: none;
+    background-color: #111827;
     &:hover {
       opacity: 0.8;
       cursor: pointer;
@@ -123,8 +122,6 @@ body {
     font-size: 24px;
     color: $delete-color;
     text-transform: uppercase;
-    background-color: #111827;
-    border: none;
     &:hover {
       opacity: 0.8;
       cursor: pointer;
