@@ -122,6 +122,8 @@ body {
     font-size: 24px;
     color: $delete-color;
     text-transform: uppercase;
+    background-color: #111827;
+    border: none;
     &:hover {
       opacity: 0.8;
       cursor: pointer;
