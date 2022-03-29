@@ -15,10 +15,10 @@ function addTask() {
   }
 
   //   Check input value for input field
-  if (userEnterValue == 0) {
-    alert("Please, Fill out your task!!!");
-    return;
-  }
+  // if (userEnterValue == 0) {
+  //   alert("Please, Fill out your task!!!");
+  //   return;
+  // }
   listArray.push(userEnterValue);
   console.log(listArray);
   localStorage.setItem("Newtodo", JSON.stringify(listArray));
