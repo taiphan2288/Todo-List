@@ -90,14 +90,6 @@ function editTask(index) {
   var task_edit_el = document.getElementById(index);
   const itemContent = document.querySelector(".menu-item .item-content");
 
-  let getLocalStorage = localStorage.getItem("Newtodo");
-  console.log({ getLocalStorage });
-  if (!getLocalStorage) {
-    listArray = [];
-  } else {
-    listArray = JSON.parse(getLocalStorage);
-  }
-
   if (task_edit_el.innerText.toLowerCase() == "edit") {
     task_edit_el.innerText = "done";
     itemContent.style.color = "#ec4899";
