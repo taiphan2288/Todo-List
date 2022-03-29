@@ -60,8 +60,8 @@ function deleteAll() {
 
 // Check task
 function checkTask(indexCheck) {
-  const checkElement = document.querySelector(".menu-item .item-edit");
-  const itemContent = document.querySelector(".menu-item .item-content");
+  const checkElement = document.querySelectorAll(".menu-item .item-edit");
+  const itemContent = document.querySelectorAll(".menu-item .item-content");
   const idCheck = indexCheck;
   while (checkElement.firstChild) {
     checkElement.removeChild(checkElement.firstChild);
@@ -71,8 +71,8 @@ function checkTask(indexCheck) {
     index = idCheck;
     childTask = `<button onclick="deleteTask(${index})" class="item-delete-task"> delete </button>`;
   });
-  checkElement.innerHTML = childTask;
-  itemContent.style.color = "#43a917";
+  checkElement[indexCheck].innerHTML = childTask;
+  itemContent[indexCheck].style.color = "#43a917";
 }
 
 // Delete task
@@ -88,19 +88,27 @@ function deleteTask(index) {
 // Edit task
 function editTask(index) {
   var task_edit_el = document.getElementById(index);
-  const itemContent = document.querySelector(".menu-item .item-content");
+  const itemContent = document.querySelectorAll(".menu-item .item-content");
+
+  let getLocalStorage = localStorage.getItem("Newtodo");
+  console.log({ getLocalStorage });
+  if (!getLocalStorage) {
+    listArray = [];
+  } else {
+    listArray = JSON.parse(getLocalStorage);
+  }
 
   if (task_edit_el.innerText.toLowerCase() == "edit") {
     task_edit_el.innerText = "done";
-    itemContent.style.color = "#ec4899";
-    itemContent.removeAttribute("disabled");
-    itemContent.focus();
+    itemContent[index].style.color = "#ec4899";
+    itemContent[index].removeAttribute("disabled");
+    itemContent[index].focus();
     console.log(index);
   } else {
     task_edit_el.innerText = "edit";
-    itemContent.style.color = "#ffffff";
-    itemContent.setAttribute("disabled", "disabled");
-    listArray.splice(index, 1, itemContent.value);
+    itemContent[index].style.color = "#ffffff";
+    itemContent[index].setAttribute("disabled", "disabled");
+    listArray.splice(index, 1, itemContent[index].value);
     console.log(index);
     localStorage.setItem("Newtodo", JSON.stringify(listArray));
 

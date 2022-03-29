@@ -24,8 +24,7 @@ body {
 
 .app {
   &-heading {
-    color: $headings-color;
-    font-size: 40px;
+    @include font-color(40px, $headings-color);
     font-weight: 400;
   }
   &-inputField {
@@ -38,10 +37,9 @@ body {
     }
   }
   &-inputbox {
+    @include font-color(20px, #eeeeee);
     background-color: #1f2937;
     border-radius: 16px;
-    color: #eeeeee;
-    font-size: 20px;
     margin: 0px 16px 0px 0px;
     padding: 16px;
     width: 90%;
@@ -52,8 +50,7 @@ body {
   margin-top: 20px;
 
   &-heading {
-    color: #ffffff;
-    font-size: 24px;
+    @include font-color(24px, #ffffff);
     font-weight: 700;
   }
   &-list {
@@ -99,43 +96,23 @@ body {
   }
   &-edit-task {
     font-size: 24px;
-    text-transform: uppercase;
-    border: none;
     background-color: #111827;
-    &:hover {
-      opacity: 0.8;
-      cursor: pointer;
-    }
+    @extend .button-extend;
   }
   &-check-task {
-    font-size: 24px;
-    color: $text-check;
-    text-transform: uppercase;
+    @include font-color(24px, $text-check);
     background-color: #111827;
-    border: none;
-    &:hover {
-      opacity: 0.8;
-      cursor: pointer;
-    }
+    @extend .button-extend;
   }
   &-delete-task {
-    font-size: 24px;
-    color: $delete-color;
-    text-transform: uppercase;
+    @include font-color(24px, $delete-color);
     background-color: #111827;
-    border: none;
-    &:hover {
-      opacity: 0.8;
-      cursor: pointer;
-    }
+    @extend .button-extend;
   }
   &-done-task {
     font-size: 24px;
-    text-transform: uppercase;
-    &:hover {
-      opacity: 0.8;
-      cursor: pointer;
-    }
+    background-color: #111827;
+    @extend .button-extend;
   }
 }
 

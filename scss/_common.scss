@@ -5,20 +5,30 @@
   background: linear-gradient(to right, $val1, $val2);
 }
 
+@mixin font-color($font, $color) {
+  font-size: $font;
+  color: $color;
+}
+
+.button-extend {
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  font-family: $font;
+  text-align: center;
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
+
 .button {
   display: inline-block;
   padding: 20px 6px;
   font-size: 24px;
   font-weight: 700;
-  text-align: center;
   background-color: #374151;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  font-family: $font;
-  &:hover {
-    opacity: 0.8;
-  }
+  @extend .button-extend;
 }
 
 .text-gradient {
