@@ -1,12 +1,10 @@
-const inputBox = document.querySelector(".app-inputField input");
+const inputBox = document.querySelector(".app-inputField .app-inputbox");
 const addBtn = document.querySelector(".app-inputField .addBtn");
 const todoList = document.querySelector(".menu .menu-list");
 const penddingTask = document.querySelector(".footer .footer-pendingTask");
-const clearAllBtn = document.querySelector(".footer .deleteBtn");
 
 showList();
-
-addBtn.addEventListener("click", () => {
+function addTask() {
   let userEnterValue = inputBox.value;
   let getLocalStorage = localStorage.getItem("Newtodo");
   //   check local storage
@@ -26,7 +24,7 @@ addBtn.addEventListener("click", () => {
   localStorage.setItem("Newtodo", JSON.stringify(listArray));
 
   showList();
-});
+}
 
 function showList() {
   let getLocalStorage = localStorage.getItem("Newtodo");
@@ -39,10 +37,10 @@ function showList() {
   newTask = "";
   listArray.forEach((item, index) => {
     newTask += `<li class="menu-item">
-                    <input type="text" class="item-content" value="${item}" disabled></input>
+                    <input type="text" class="item-content" value="${item}" disabled />
                     <div class="item-edit">
-                        <span onclick="editTask(${index})" id="${index}" class="item-edit-task text-gradient">edit</span>
-                        <span onclick="checkTask(${index})" class="item-check-task"> check </span>
+                      <button onclick="editTask(${index})" id="${index}" class="item-edit-task text-gradient">edit</button>
+                      <button onclick="checkTask(${index})" id="${index}" class="item-check-task"> check </button>
                     </div>
                 </li>`;
   });
@@ -53,7 +51,6 @@ function showList() {
 }
 
 // Delete all task
-clearAllBtn.onclick = deleteAll;
 function deleteAll() {
   listArray = [];
   localStorage.setItem("Newtodo", JSON.stringify(listArray));
@@ -72,7 +69,7 @@ function checkTask(indexCheck) {
   childTask = " ";
   listArray.forEach((item, index) => {
     index = idCheck;
-    childTask = `<span onclick="deleteTask(${index})" class="item-delete-task"> delete </span>`;
+    childTask = `<button onclick="deleteTask(${index})" class="item-delete-task"> delete </button>`;
   });
   checkElement.innerHTML = childTask;
   itemContent.style.color = "#43a917";
@@ -80,8 +77,6 @@ function checkTask(indexCheck) {
 
 // Delete task
 function deleteTask(index) {
-  let getLocalStorageData = localStorage.getItem("Newtodo");
-  listArray = JSON.parse(getLocalStorageData);
   if (confirm("Are you sure, you want to delete this task?")) {
     listArray.splice(index, 1);
     localStorage.setItem("Newtodo", JSON.stringify(listArray));
@@ -108,7 +103,7 @@ function editTask(index) {
     itemContent.style.color = "#ec4899";
     itemContent.removeAttribute("disabled");
     itemContent.focus();
-    // console.log(index);
+    console.log(index);
   } else {
     task_edit_el.innerText = "edit";
     itemContent.style.color = "#ffffff";

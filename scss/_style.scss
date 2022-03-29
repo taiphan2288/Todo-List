@@ -33,18 +33,19 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-top: 15px;
-    input {
-      background-color: #1f2937;
-      border-radius: 16px;
-      color: #eeeeee;
-      font-size: 20px;
-      margin: 0px 16px 0px 0px;
-      padding: 16px;
-      width: 90%;
-    }
+
     button {
       flex-shrink: 0;
     }
+  }
+  &-inputbox {
+    background-color: #1f2937;
+    border-radius: 16px;
+    color: #eeeeee;
+    font-size: 20px;
+    margin: 0px 16px 0px 0px;
+    padding: 16px;
+    width: 90%;
   }
 }
 
@@ -100,6 +101,8 @@ body {
   &-edit-task {
     font-size: 24px;
     text-transform: uppercase;
+    background-color: #111827;
+    border: none;
     &:hover {
       opacity: 0.8;
       cursor: pointer;
@@ -109,6 +112,8 @@ body {
     font-size: 24px;
     color: $text-check;
     text-transform: uppercase;
+    background-color: #111827;
+    border: none;
     &:hover {
       opacity: 0.8;
       cursor: pointer;
@@ -118,6 +123,8 @@ body {
     font-size: 24px;
     color: $delete-color;
     text-transform: uppercase;
+    background-color: #111827;
+    border: none;
     &:hover {
       opacity: 0.8;
       cursor: pointer;
