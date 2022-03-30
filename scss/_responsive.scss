@@ -1,0 +1,24 @@
+@media only screen and (max-width: 600px) {
+  .app-container {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .button {
+    font-size: 18px;
+  }
+  .item {
+    &-edit {
+      margin-right: 40px;
+    }
+    &-content {
+      @include font-color(16px, #fff);
+    }
+    &-edit-task {
+      font-size: 16px;
+    }
+    &-check-task {
+      @include font-color(16px, $text-check);
+    }
+  }
+}

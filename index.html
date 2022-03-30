@@ -15,16 +15,19 @@
           <!-- Input -->
           <form class="app-inputField">
             <input
+              onkeyup="onChangeAddTask(this.value);"
               class="app-inputbox"
               type="text"
               name="task"
               id="task"
               placeholder="What do you have planned?"
+              value=""
             />
             <input
               onclick="addTask()"
               type="submit"
-              class="button addBtn text-gradient"
+              id="add-task"
+              class="button app-inputadd addBtn text-gradient hide-task"
               value="Add task"
             />
           </form>

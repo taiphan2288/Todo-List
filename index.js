@@ -15,13 +15,11 @@ function addTask() {
   }
 
   //   Check input value for input field
-  // if (userEnterValue == 0) {
-  //   alert("Please, Fill out your task!!!");
-  //   return;
-  // }
-  listArray.push(userEnterValue);
-  console.log(listArray);
-  localStorage.setItem("Newtodo", JSON.stringify(listArray));
+  if (userEnterValue.trim() != 0) {
+    listArray.push(userEnterValue);
+    // console.log(listArray);
+    localStorage.setItem("Newtodo", JSON.stringify(listArray));
+  }
 
   showList();
 }
@@ -36,11 +34,11 @@ function showList() {
   }
   newTask = "";
   listArray.forEach((item, index) => {
-    newTask += `<li class="menu-item">
-                    <input type="text" class="item-content" value="${item}" disabled />
+    newTask += `<li onmouseleave="unhover(${index})" onmouseenter="hover(${index})" class="menu-item">
+                    <input type="text" class="item-content id-${index}" value="${item}" disabled />
                     <div class="item-edit">
                       <button onclick="editTask(${index})" id="${index}" class="item-edit-task text-gradient">edit</button>
-                      <button onclick="checkTask(${index})" id="${index}" class="item-check-task"> check </button>
+                      <button onclick="checkTask(${index})" id="${index}" class="item-check-task">check</button>
                     </div>
                 </li>`;
   });
@@ -48,6 +46,7 @@ function showList() {
   inputBox.value = "";
   console.log(listArray);
   penddingTask.innerHTML = listArray.length;
+  // showAddTask();
 }
 
 // Delete all task
@@ -88,8 +87,9 @@ function deleteTask(index) {
 
 // Edit task
 function editTask(index) {
-  var task_edit_el = document.getElementById(index);
-  const itemContent = document.querySelectorAll(".menu-item .item-content");
+  let task_edit_el = document.getElementById(index);
+  let itemContent = document.querySelectorAll(".menu-item .item-content");
+  let checkElement = document.querySelectorAll(".menu-item .item-edit");
 
   if (task_edit_el.innerText.toLowerCase() == "edit") {
     task_edit_el.innerText = "done";
@@ -107,4 +107,28 @@ function editTask(index) {
 
     showList();
   }
+}
+
+// show Add task
+function onChangeAddTask(value) {
+  let showTask = document.getElementById("add-task");
+  if (value != "") {
+    showTask.classList.remove("hide-task");
+    showTask.classList.add("show-task");
+  } else {
+    showTask.classList.add("hide-task");
+    showTask.classList.remove("show-task");
+  }
+}
+
+// Add and remove hover for edit task
+function hover(index) {
+  let checkElement = document.querySelectorAll(".menu-item .item-edit");
+  if (listArray.length > 0) {
+    checkElement[index].classList.add("hover");
+  }
+}
+function unhover(index) {
+  let checkElement = document.querySelectorAll(".menu-item .item-edit");
+  checkElement[index].classList.remove("hover");
 }
