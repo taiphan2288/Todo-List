@@ -73,22 +73,6 @@ body {
     overflow: hidden;
     position: relative;
     cursor: pointer;
-    // &:hover {
-    //   .item-edit {
-    //     display: block;
-    //     display: flex;
-    //     justify-content: center;
-    //     align-items: center;
-    //     opacity: 1;
-    //     gap: 0 20px;
-    //     margin-right: 1%;
-    //     animation: fadeIn 0.5s linear;
-    //     transform: translateX(0);
-    //   }
-    //   .item-content {
-    //     width: 80%;
-    //   }
-    // }
   }
 }
 
@@ -148,17 +132,18 @@ body {
 }
 
 .show-task {
-  display: block;
-  animation: fadeIn 0.5s linear;
+  width: 250px;
+  opacity: 1;
+  transition: 0.5s;
 }
 
 .hide-task {
-  display: none;
-  animation: fadeOut 0.5s linear;
+  width: 0;
+  opacity: 0;
+  transition: 0.5s;
 }
 
 .hover {
-  display: block;
   display: flex;
   justify-content: center;
   align-items: center;

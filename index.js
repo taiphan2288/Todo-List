@@ -104,8 +104,6 @@ function editTask(index) {
     listArray.splice(index, 1, itemContent[index].value);
     console.log(index);
     localStorage.setItem("Newtodo", JSON.stringify(listArray));
-
-    showList();
   }
 }
 
