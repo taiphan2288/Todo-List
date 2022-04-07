@@ -5,6 +5,7 @@ $(document).ready(function () {
     let userEnterValue = $(".app-inputbox").val();
     console.log(userEnterValue);
     let getLocalStorage = localStorage.getItem("Newtodo");
+
     //   check local storage
     if (!getLocalStorage) {
       listArray = [];
@@ -30,6 +31,7 @@ $(document).ready(function () {
     } else {
       listArray = JSON.parse(getLocalStorage);
     }
+
     newTask = "";
     listArray.forEach((item, index) => {
       newTask += `<li class="menu-item" data-id="${index}" title="${item}">
@@ -42,6 +44,7 @@ $(document).ready(function () {
 
       console.log(item);
     });
+
     $(".menu-list").html(newTask);
     $(".app-inputbox").val("");
     console.log(listArray);
@@ -103,7 +106,9 @@ $(document).ready(function () {
   $(document).on("click", ".item-check-task", function (e) {
     let id = $(this).data("check");
     let value = $("#item-content-" + id).val();
+
     childTask = `<button class="item-delete-task" data-delete="${id}">delete</button>`;
+
     $("#edit-task-" + id).remove();
     $(this).replaceWith(childTask);
     $("#item-content-" + id).css("color", "#43a917");
@@ -113,11 +118,13 @@ $(document).ready(function () {
   // Delete task
   $(document).on("click", ".item-delete-task", function (e) {
     let id = $(this).data("delete");
+
     // console.log(id);
     if (confirm("Are you sure, you want to delete this task?")) {
       listArray.splice(id, 1);
       localStorage.setItem("Newtodo", JSON.stringify(listArray));
     }
+
     showList();
   });
 });
