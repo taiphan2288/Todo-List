@@ -104,7 +104,6 @@ $(document).ready(function () {
     let id = $(this).data("check");
     let value = $("#item-content-" + id).val();
     childTask = `<button class="item-delete-task" data-delete="${id}">delete</button>`;
-    // console.log(id);
     $("#edit-task-" + id).remove();
     $(this).replaceWith(childTask);
     $("#item-content-" + id).css("color", "#43a917");
