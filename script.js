@@ -114,11 +114,11 @@ $(document).ready(function () {
   // Delete task
   $(document).on("click", ".item-delete-task", function (e) {
     let id = $(this).data("delete");
-    console.log(id);
+    // console.log(id);
     if (confirm("Are you sure, you want to delete this task?")) {
       listArray.splice(id, 1);
       localStorage.setItem("Newtodo", JSON.stringify(listArray));
-      showList();
     }
+    showList();
   });
 });
