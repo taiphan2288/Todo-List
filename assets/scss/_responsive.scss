@@ -20,5 +20,8 @@
     &-check-task {
       @include font-color(16px, $text-check);
     }
+    &-delete-task{
+      @include font-color(16px, $delete-color);
+    }
   }
 }

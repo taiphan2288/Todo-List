@@ -39,7 +39,7 @@ $(document).ready(function () {
                     <input type="text" class="item-content" id="item-content-${index}" value="${item}" disabled />
                     <div class="item-edit" id="item-edit-${index}" data-index="${index}">
                       <button class="item-edit-task text-gradient" id="edit-task-${index}" data-edit="${index}">edit</button>
-                      <button class="item-check-task" data-check="${index}">check</button>
+                      <button class="item-check-task" id="check-task-${index}" data-check="${index}">check</button>
                     </div>
                 </li>`;
 
@@ -97,13 +97,21 @@ $(document).ready(function () {
       $("#item-content-" + id).css("color", "#ec4899");
       $("#item-content-" + id).removeAttr("disabled");
       $("#item-content-" + id).focus();
+
+      childTask = `<button class="item-delete-task" id="delete-task-${id}" data-delete="${id}">delete</button>`;
+      $("#check-task-" + id).replaceWith(childTask);
     } else {
       $(this).text("edit");
       $("#item-content-" + id).css("color", "#ffffff");
       $("#item-content-" + id).attr("disabled", "disabled");
+
+      childTask = `<button class="item-check-task" id="check-task-${id}" data-check="${id}">check</button>`;
+      $("#delete-task-" + id).replaceWith(childTask);
+
       listArray.splice(id, 1, $("#item-content-" + id).val());
       localStorage.setItem("Newtodo", JSON.stringify(listArray));
     }
+
   });
 
   // Check task
