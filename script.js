@@ -32,6 +32,7 @@ $(document).ready(function () {
       listArray = JSON.parse(getLocalStorage);
     }
 
+
     newTask = "";
     listArray.forEach((item, index) => {
       newTask += `<li class="menu-item" data-id="${index}" title="${item}">
@@ -61,6 +62,7 @@ $(document).ready(function () {
   // show Add task
   $(".app-inputbox").keyup(function () {
     let value = $(this).val();
+
     if (value != "") {
       $(".addBtn").removeClass("hide-task");
       $(".addBtn").addClass("show-task");
@@ -77,6 +79,7 @@ $(document).ready(function () {
       $("#item-edit-" + id).addClass("hover");
     }
   });
+
   $(document).on("mouseleave", ".menu-item", function (e) {
     let id = $(this).data("id");
     if (listArray.length > 0) {
@@ -88,6 +91,7 @@ $(document).ready(function () {
   $(document).on("click", ".item-edit-task", function (e) {
     let id = $(this).data("edit");
     // console.log($(this).text());
+
     if ($(this).text().toLowerCase() == "edit") {
       $(this).text("done");
       $("#item-content-" + id).css("color", "#ec4899");
@@ -113,6 +117,7 @@ $(document).ready(function () {
     $(this).replaceWith(childTask);
     $("#item-content-" + id).css("color", "#43a917");
     $("#item-content-" + id).val(value + " - Checked");
+    console.log(listArray[id]);
   });
 
   // Delete task
