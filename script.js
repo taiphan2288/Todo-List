@@ -1,7 +1,7 @@
 $(document).ready(function () {
   showList();
 
-  $(".addBtn").click(function () {
+  $(document).on("click", ".addBtn", function (e) {
     let userEnterValue = $(".app-inputbox").val();
     // console.log(userEnterValue);
     let getLocalStorage = localStorage.getItem("Newtodo");
@@ -20,7 +20,6 @@ $(document).ready(function () {
       // console.log(listArray);
       localStorage.setItem("Newtodo", JSON.stringify(listArray));
     }
-
     showList();
   });
 
@@ -49,6 +48,7 @@ $(document).ready(function () {
     });
 
     $(".menu-list").html(newTask);
+
     $(".app-inputbox").val("");
     // console.log(listArray);
     $(".footer-pendingTask").html(listArray.length);
@@ -96,6 +96,7 @@ $(document).ready(function () {
 
     if ($(this).text().toLowerCase() == "edit") {
       $(this).text("done");
+
       $("#item-content-" + id).css("color", "#ec4899");
       $("#item-content-" + id).removeAttr("disabled");
       $("#item-content-" + id).focus();
@@ -104,6 +105,7 @@ $(document).ready(function () {
       $("#check-task-" + id).replaceWith(childTask);
     } else {
       $(this).text("edit");
+
       $("#item-content-" + id).css("color", "#ffffff");
       $("#item-content-" + id).attr("disabled", "disabled");
 
@@ -125,6 +127,7 @@ $(document).ready(function () {
 
     $("#edit-task-" + id).remove();
     $(this).replaceWith(childTask);
+
     $("#item-content-" + id).css("color", "#43a917");
     $("#item-content-" + id).val(value + " - Checked");
     // console.log(listArray[id]);
