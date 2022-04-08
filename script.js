@@ -43,7 +43,7 @@ $(document).ready(function () {
                     </div>
                 </li>`;
 
-      console.log(item);
+      // console.log(item);
     });
 
     $(".menu-list").html(newTask);
@@ -100,6 +100,7 @@ $(document).ready(function () {
 
       childTask = `<button class="item-delete-task" id="delete-task-${id}" data-delete="${id}">delete</button>`;
       $("#check-task-" + id).replaceWith(childTask);
+
     } else {
       $(this).text("edit");
       $("#item-content-" + id).css("color", "#ffffff");
@@ -108,6 +109,7 @@ $(document).ready(function () {
       childTask = `<button class="item-check-task" id="check-task-${id}" data-check="${id}">check</button>`;
       $("#delete-task-" + id).replaceWith(childTask);
 
+      // Save to local storage
       listArray.splice(id, 1, $("#item-content-" + id).val());
       localStorage.setItem("Newtodo", JSON.stringify(listArray));
     }
@@ -125,7 +127,7 @@ $(document).ready(function () {
     $(this).replaceWith(childTask);
     $("#item-content-" + id).css("color", "#43a917");
     $("#item-content-" + id).val(value + " - Checked");
-    console.log(listArray[id]);
+    // console.log(listArray[id]);
   });
 
   // Delete task
