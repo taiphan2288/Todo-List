@@ -74,14 +74,14 @@ $(document).ready(function () {
     }
   });
 
-  // Add and remove hover for edit task
+  // Add hover for edit task
   $(document).on("mouseenter", ".menu-item", function (e) {
     let id = $(this).data("id");
     if (listArray.length > 0) {
       $("#item-edit-" + id).addClass("hover");
     }
   });
-
+  // Remove hover for edit task
   $(document).on("mouseleave", ".menu-item", function (e) {
     let id = $(this).data("id");
     if (listArray.length > 0) {
