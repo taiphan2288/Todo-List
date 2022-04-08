@@ -3,7 +3,7 @@ $(document).ready(function () {
 
   $(".addBtn").click(function () {
     let userEnterValue = $(".app-inputbox").val();
-    console.log(userEnterValue);
+    // console.log(userEnterValue);
     let getLocalStorage = localStorage.getItem("Newtodo");
 
     //   check local storage
@@ -13,6 +13,7 @@ $(document).ready(function () {
       listArray = JSON.parse(getLocalStorage);
     }
 
+    console.log(listArray);
     //   Check input value for input field
     if (userEnterValue.trim() != 0) {
       listArray.push(userEnterValue);
@@ -23,6 +24,16 @@ $(document).ready(function () {
     showList();
   });
 
+  function appendTodo(index, item) {
+    return `<li class="menu-item" id="menu-item-${index}" data-id="${index}" title="${item}">
+              <input type="text" class="item-content" id="item-content-${index}" value="${item}" disabled />
+              <div class="item-edit" id="item-edit-${index}" data-index="${index}">
+                <button class="item-edit-task text-gradient" id="edit-task-${index}" data-edit="${index}">edit</button>
+                <button class="item-check-task" id="check-task-${index}" data-check="${index}">check</button>
+              </div>
+            </li>`;
+  }
+
   function showList() {
     let getLocalStorage = localStorage.getItem("Newtodo");
     //   check local storage
@@ -32,23 +43,14 @@ $(document).ready(function () {
       listArray = JSON.parse(getLocalStorage);
     }
 
-
     newTask = "";
     listArray.forEach((item, index) => {
-      newTask += `<li class="menu-item" data-id="${index}" title="${item}">
-                    <input type="text" class="item-content" id="item-content-${index}" value="${item}" disabled />
-                    <div class="item-edit" id="item-edit-${index}" data-index="${index}">
-                      <button class="item-edit-task text-gradient" id="edit-task-${index}" data-edit="${index}">edit</button>
-                      <button class="item-check-task" id="check-task-${index}" data-check="${index}">check</button>
-                    </div>
-                </li>`;
-
-      // console.log(item);
+      newTask += appendTodo(index, item);
     });
 
     $(".menu-list").html(newTask);
     $(".app-inputbox").val("");
-    console.log(listArray);
+    // console.log(listArray);
     $(".footer-pendingTask").html(listArray.length);
   }
 
@@ -100,7 +102,6 @@ $(document).ready(function () {
 
       childTask = `<button class="item-delete-task" id="delete-task-${id}" data-delete="${id}">delete</button>`;
       $("#check-task-" + id).replaceWith(childTask);
-
     } else {
       $(this).text("edit");
       $("#item-content-" + id).css("color", "#ffffff");
@@ -113,7 +114,6 @@ $(document).ready(function () {
       listArray.splice(id, 1, $("#item-content-" + id).val());
       localStorage.setItem("Newtodo", JSON.stringify(listArray));
     }
-
   });
 
   // Check task

@@ -153,3 +153,7 @@ body {
   animation: fadeIn 0.5s linear;
   transform: translateX(0);
 }
+
+.trigger_animation {
+  animation: task-up 1s linear;
+}
