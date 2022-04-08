@@ -21,6 +21,7 @@
       @include font-color(16px, $text-check);
     }
     &-delete-task{
+      font-size: 16px;
       @include font-color(16px, $delete-color);
     }
   }
